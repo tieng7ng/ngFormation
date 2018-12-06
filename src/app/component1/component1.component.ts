@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-component1',
@@ -6,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./component1.component.css']
 })
 export class Component1Component implements OnInit {
-  cmpt: number = 0;
+  @Input() cmpt:number = 5;
+  @Output() childEvent = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  /**
+   /**
    * 
    */
   increment() {
@@ -24,7 +27,16 @@ export class Component1Component implements OnInit {
    * 
    */
   clear() {
-    this.cmpt=0;
+    this.cmpt = 0;
+
+    // Send to parent
+    this.childEvent.emit(this.cmpt);
   }
 
+
+  showMessage(message: string, event: any) {
+    alert('message ' + message);
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }

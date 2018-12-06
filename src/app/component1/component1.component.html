@@ -6,5 +6,13 @@
   <button (click)="increment()">+</button>
   <button (click)="clear()">reset</button>
 
-  {{cmpt}}
+  >>>{{ childProp }}<< {{cmpt}} 
+  <input [(ngModel)]="cmpt">
+
+</div>
+
+
+<div (click)="showMessage('parent', $event)">
+  Message parent
+  <span (click)="showMessage('child', $event)">Message child</span>
 </div>

@@ -1,12 +1,53 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
+  <h1 #myTitle>
+    WELcome to {{ title }}
   </h1>
 
   today {{dateToday | date: 'dd/MM/yyyy'}}
-
 </div>
-<h2>Here are some links to help you start: </h2>
 
-<app-component1></app-component1>
+<<< PIPE <<< {{ myTitle.textContent | specialUp }}>>>
+
+  {{ child.cmpt }};
+  <div>
+    >>>> DATA {{ dataInfo }}
+  </div>
+  <h2>Here are some links to help you start: </h2>
+
+
+
+
+  <div style="border: 2px solid black; padding: 1rem;">
+    <h4>App Component</h4>
+    <app-child-select>
+      <section> APP COMPONENT Section Content</section>
+      <div class="class-select">
+        APP COMPONENT div with .class-select
+      </div>
+      <footer><b> APP COMPONENT Footer Content</b></footer>
+      <header> APP COMPONENT Header Content</header>
+    </app-child-select>
+  </div>
+
+  <app-component1 [cmpt]="parentProp" (childEvent)="clearParentEvent($event)"></app-component1>
+
+  <div> Recherche d'ID
+    <input type="text" [formControl]="formId"><button (click)="searchId()">searchId</button> {{formName}}
+  </div>
+
+  <div>
+      <table>
+          <thead>
+              <th>Name</th>
+              <th>UserName</th>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of listUser">
+                  <td>{{user.name}}</td>
+                  <td>{{user.username}}</td>
+              </tr>
+          </tbody>
+      </table>
+    <u *ngfor=""></u>
+  </div>
